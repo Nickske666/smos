@@ -26,17 +26,16 @@ toLocalTimeOfDay Org.DateTime {..} =
     flip (maybe midnight) hourMinute $ \(h, m) -> TimeOfDay h m 0
 
 toNominalDiffTime :: Org.Duration -> NominalDiffTime
-toNominalDiffTime (h, m) =
-    intToDiffTime h * secPerH + intToDiffTime m * secPerMin
+toNominalDiffTime (h, m) = diffTime h * hour + diffTime m * minute
 
-intToDiffTime :: Int -> NominalDiffTime
-intToDiffTime = fromInteger . toInteger
+diffTime :: Int -> NominalDiffTime
+diffTime = fromInteger . toInteger
 
-secPerH :: NominalDiffTime
-secPerH = 3600
+hour :: NominalDiffTime
+hour = 3600
 
-secPerMin :: NominalDiffTime
-secPerMin = 60
+minute :: NominalDiffTime
+minute = 60
 
 toTimestampName :: Org.PlanningKeyword -> TimestampName
 toTimestampName Org.SCHEDULED = TimestampName "SCHEDULED"

@@ -14,11 +14,12 @@ import Data.Hashable
 
 import Data.Time.LocalTime
 
-import Data.Graph.Inductive.Query.Monad ((><))
+(><) :: (a -> c) -> (b -> d) -> (a, b) -> (c, d)
+(><) f1 f2 (v1, v2) = (f1 v1, f2 v2)
 
 mapHashMap ::
        (Eq c, Hashable c) => (a -> c) -> (b -> d) -> HashMap a b -> HashMap c d
-mapHashMap f1 f2 hashmap = HM.fromList $ (><) f1 f2 <$> HM.toList hashmap
+mapHashMap f1 f2 hashmap = HM.fromList $ f1 >< f2 <$> HM.toList hashmap
 
 getProperties :: Org.Properties -> HashMap PropertyName PropertyValue
 getProperties Org.Properties {..} =

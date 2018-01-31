@@ -10,3 +10,7 @@ import Data.Tree as X
 import Test.Hspec as X
 import Test.QuickCheck as X
 import Test.Validity as X
+
+import Data.GenValidity.Text as X ()
+import Data.GenValidity.Time.Clock as X ()
+import Data.GenValidity.Time.LocalTime as X ()
