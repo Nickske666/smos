@@ -16,10 +16,10 @@ toSmosFile :: Document -> IO SmosFile
 toSmosFile Document {..} = do
     now <- getCurrentTime
     timezone <- getCurrentTimeZone
-    let forrest = toEntryTree timezone now <$> documentHeadlines
+    let forest = toEntryTree timezone now <$> documentHeadlines
     SmosFile <$>
         case documentText of
-            "" -> pure forrest
+            "" -> pure forest
             text ->
                 let tree = Node (newEntry $ Header text) []
-                in pure $ tree : forrest
+                in pure $ tree : forest

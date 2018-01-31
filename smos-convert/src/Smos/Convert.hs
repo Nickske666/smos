@@ -21,7 +21,7 @@ smosConvert = do
 
 execute :: Dispatch -> Settings -> IO ()
 execute (DispatchConvertFile DispatchConvertFileArgs {..}) _ =
-    mapM_ convert orgpaths
+    mapM_ convert dispatchConvertPaths
 
 convert :: Path Abs File -> IO ()
 convert path = do

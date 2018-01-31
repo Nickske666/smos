@@ -28,8 +28,8 @@ toEntryTree timezone now headline@Headline {..} =
             , entryTags = Tag <$> tags
             , entryLogbook = getLogbook timezone $ sectionLogbook section
             }
-        forrest = toEntryTree timezone now <$> subHeadlines
-    in Node entry forrest
+        forest = toEntryTree timezone now <$> subHeadlines
+    in Node entry forest
 
 stateHistory :: TimeZone -> UTCTime -> Headline -> StateHistory
 stateHistory timezone now Headline {..} =

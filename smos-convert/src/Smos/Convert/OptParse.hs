@@ -37,7 +37,7 @@ getSettingsFromConfig _ _ = pure Settings
 getDispatch :: Command -> Flags -> IO Dispatch
 getDispatch (ConvertFile ConvertFileArgs {..}) _ =
     DispatchConvertFile . DispatchConvertFileArgs <$>
-    sequence (parseAbsFile <$> orgfiles)
+    sequence (parseAbsFile <$> convertArgsFiles)
 
 getConfig :: Flags -> IO Configuration
 getConfig _ = pure Configuration

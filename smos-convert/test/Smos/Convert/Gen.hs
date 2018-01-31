@@ -42,15 +42,6 @@ genYMD = do
     (y, m, d) <- toGregorian <$> genValid
     pure $ YearMonthDay (fromInteger y) m d
 
-genUncheckedHM :: Gen (Maybe (Hour, Minute))
-genUncheckedHM =
-    oneof
-        [ pure Nothing
-        , do h <- arbitrary
-             m <- arbitrary
-             pure $ Just (h, m)
-        ]
-
 genHM :: Gen (Maybe (Hour, Minute))
 genHM =
     oneof
@@ -62,7 +53,7 @@ genHM =
 instance GenUnchecked DateTime where
     genUnchecked = do
         yearMonthDay <- YearMonthDay <$> arbitrary <*> arbitrary <*> arbitrary
-        hourMinute <- genUncheckedHM
+        hourMinute <- genUnchecked
         pure $ DateTime yearMonthDay Nothing hourMinute Nothing Nothing
     shrinkUnchecked _ = []
 

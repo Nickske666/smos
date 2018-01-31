@@ -10,7 +10,7 @@ type Arguments = (Command, Flags)
 type Instructions = (Dispatch, Settings)
 
 newtype ConvertFileArgs = ConvertFileArgs
-    { orgfiles :: [FilePath]
+    { convertArgsFiles :: [FilePath]
     } deriving (Show, Eq)
 
 newtype Command =
@@ -30,7 +30,7 @@ data Configuration =
     deriving (Show, Eq)
 
 newtype DispatchConvertFileArgs = DispatchConvertFileArgs
-    { orgpaths :: [Path Abs File]
+    { dispatchConvertPaths :: [Path Abs File]
     } deriving (Show, Eq)
 
 newtype Dispatch =
